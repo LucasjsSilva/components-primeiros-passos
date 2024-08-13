@@ -2,26 +2,29 @@ class CardNews extends HTMLElement {
     constructor(){
         super();
         
-        const shadow = this.attachShadow({mode: 'open'})
-        shadow.innerHTML = `<div class="container">
-        <div class="card">
-            <div class="card_left">
-                <span>
-                    Nome da Pessoa
-                </span>
-                <h2>
-                    Darth Vader está contratando devs
-                </h2>
-        
-                <p>
-                    Está procurando novos devs hahah.
-                </p>
-            </div>
-            <div class="card_right">
-                <img src="assets/asset-vader.jpeg" alt="vader">
-            </div>
-        </div>
-    </div>`
+        const shadow = this.attachShadow({mode: 'open'});
+        shadow.appendChild(this.build());
+        shadow.appendChild(this.styles());        
+    }
+
+    build(){
+        const componentRoot = document.createElement("div");
+        componentRoot.setAttribute("class", "card")
+
+        const cardLeft = document.createElement("div");
+        cardLeft.setAttribute("class", "card_left")
+
+        const cardRight = document.createElement("div");
+        cardRight.setAttribute("class", "card_right")
+
+        componentRoot.appendChild(cardLeft);
+        componentRoot.appendChild(cardRight);
+
+        return componentRoot
+    }
+
+    styles(){
+
     }
 }
 
