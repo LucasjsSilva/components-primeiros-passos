@@ -15,9 +15,13 @@ class CardNews extends HTMLElement {
         cardLeft.setAttribute("class", "card_left")
 
         const autor = document.createElement("span");
-        const linkTitle = document.createElement("a");        
-        const newsContent = document.createElement("p");
+        autor.textContent = "By " + (this.getAttribute("autor") || "Anonymous");
 
+        const linkTitle = document.createElement("a");   
+        linkTitle.textContent =  this.getAttribute("title")
+        
+        const newsContent = document.createElement("p");
+        newsContent.textContent =  this.getAttribute("content")
         cardLeft.appendChild(autor);
         cardLeft.appendChild(linkTitle);
         cardLeft.appendChild(newsContent);
@@ -31,7 +35,7 @@ class CardNews extends HTMLElement {
         componentRoot.appendChild(cardLeft);
         componentRoot.appendChild(cardRight);
 
-        return componentRoot
+        return componentRoot;
     }
 
     styles(){
@@ -39,4 +43,4 @@ class CardNews extends HTMLElement {
     }
 }
 
-customElements.define('card-news', CardNews)
+customElements.define('card-news', CardNews);
